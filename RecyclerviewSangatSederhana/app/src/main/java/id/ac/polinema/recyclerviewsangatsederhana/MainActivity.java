@@ -1,16 +1,20 @@
 package id.ac.polinema.recyclerviewsangatsederhana;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
 
+import id.ac.polinema.recyclerviewsangatsederhana.Models.NightHero;
 import id.ac.polinema.recyclerviewsangatsederhana.Models.SuperHero;
+import id.ac.polinema.recyclerviewsangatsederhana.adapters.NightHeroAdapter;
 import id.ac.polinema.recyclerviewsangatsederhana.adapters.SuperHeroAdapter;
 
 
@@ -18,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     //instansiasi Recyclerview
     RecyclerView rvSuperHero;
     //instansiasi list superhero
-    List<SuperHero> listSuperHero = new ArrayList<>();
+    List<NightHero> listSuperHero = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,18 +31,18 @@ public class MainActivity extends AppCompatActivity {
         //menyambungkan rvSuperHero ke layout
         rvSuperHero = findViewById(R.id.rvSuperHero);
         //Membuat object hero
-        SuperHero hero = new SuperHero("Petruk");
+        NightHero hero = new NightHero("Instagram", "https://img.icons8.com/cotton/2x/instagram.png");
         //menambahkan hero ke listSuperHero
         listSuperHero.add(hero);
         //membuat object hero baru
-        hero = new SuperHero("Gareng");
+        hero = new NightHero("Facebook", "https://i.pinimg.com/originals/4b/b7/71/4bb7714d4fafdd4426ef8644fde397fc.png");
         //menambahkan hero baru ke listSuperhero
         listSuperHero.add(hero);
         //Instansiasi Adapter
-        SuperHeroAdapter superHeroAdapter = new SuperHeroAdapter(listSuperHero);
+        NightHeroAdapter nightHeroAdapter = new NightHeroAdapter(listSuperHero);
         //set adapter dan layoutmanager
-        rvSuperHero.setAdapter(superHeroAdapter);
-        rvSuperHero.setLayoutManager(new LinearLayoutManager(this));
+        rvSuperHero.setAdapter(nightHeroAdapter);
+        rvSuperHero.setLayoutManager(new GridLayoutManager(this, 2));
 
 
     }
